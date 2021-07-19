@@ -1,10 +1,20 @@
 #!/usr/bin/env nextflow
 
-blastdb="myBlastDatabase" // set a variable inside the nextflow script
-params.query="file.fasta" // set a pipeline parameter
+//blastdb="myBlastDatabase" // set a variable inside the nextflow script
+//params.query="file.fasta" // set a pipeline parameter
 // to make a variable a pipeline parameter just prepend the variable with params.
 
 
+//println "I will BLAST $params.query against $blastdb" // a simple print statement
+println "\nI want to BLAST $params.query to $params.dbDir/$params.dbName using $params.threads CPUs and output it to $params.outdir\n"
 
-println "I will BLAST $params.query against $blastdb" // a simple print statement
 // that uses both a nextflow variable and a pipeline parameter
+
+process runBlast {
+
+    script:
+    """
+    blastn -num_threads 2 -db $PWD/DB/blastDB -query $PWD/input.fasta -outfmt 6 -out input.blastout
+    """
+
+}
