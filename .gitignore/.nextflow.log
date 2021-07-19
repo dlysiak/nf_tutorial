@@ -1,0 +1,39 @@
+Jul-19 11:45:48.050 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --query sample1.fasta
+Jul-19 11:45:48.176 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.2
+Jul-19 11:45:48.200 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [sleepy_carson] - revision: 132286cee6
+Jul-19 11:45:48.215 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/c/Users/darialysiak/Documents/daria/Working_folder/nextflow/bioinformatics_workbook/nf_tutorial/nextflow.config
+Jul-19 11:45:48.216 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/c/Users/darialysiak/Documents/daria/Working_folder/nextflow/bioinformatics_workbook/nf_tutorial/nextflow.config
+Jul-19 11:45:48.244 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-19 11:45:48.684 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/daria/.nextflow/plugins
+Jul-19 11:45:48.685 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-19 11:45:48.688 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jul-19 11:45:48.700 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-19 11:45:48.703 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-19 11:45:48.707 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-19 11:45:48.723 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-19 11:45:48.763 [main] DEBUG nextflow.Session - Session uuid: b73d48a0-b612-4a11-84d1-155303924868
+Jul-19 11:45:48.763 [main] DEBUG nextflow.Session - Run name: sleepy_carson
+Jul-19 11:45:48.764 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-19 11:45:48.790 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.2 build 5558
+  Created: 12-07-2021 07:54 UTC (08:54 IST)
+  System: Linux 5.4.72-microsoft-standard-WSL2
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.11+9-Ubuntu-0ubuntu2.18.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 737@L-99N1P53 [127.0.1.1]
+  CPUs: 8 - Mem: 24.7 GB (24.1 GB) - Swap: 7 GB (7 GB)
+Jul-19 11:45:48.817 [main] DEBUG nextflow.Session - Work-dir: /mnt/c/Users/darialysiak/Documents/daria/Working_folder/nextflow/bioinformatics_workbook/nf_tutorial/work [v9fs]
+Jul-19 11:45:48.818 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/c/Users/darialysiak/Documents/daria/Working_folder/nextflow/bioinformatics_workbook/nf_tutorial/bin
+Jul-19 11:45:48.830 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-19 11:45:48.842 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-19 11:45:49.017 [main] DEBUG nextflow.Session - Session start invoked
+Jul-19 11:45:49.193 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-19 11:45:49.209 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: 
+Jul-19 11:45:49.212 [main] INFO  nextflow.script.BaseScript - I will BLAST sample1.fasta against myBlastDatabase
+Jul-19 11:45:49.213 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-19 11:45:49.214 [main] DEBUG nextflow.Session - Session await
+Jul-19 11:45:49.214 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-19 11:45:49.214 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-19 11:45:49.236 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jul-19 11:45:49.471 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jul-19 11:45:49.497 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

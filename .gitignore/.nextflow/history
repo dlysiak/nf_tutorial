@@ -1,0 +1,5 @@
+2021-07-19 11:36:13	-	distracted_engelbart	-	116d88a111d74b60c0cf756e9b79743a	a4ca18d7-072f-4e0e-b0e3-79d14ffb8aae	nextflow run main.nf
+2021-07-19 11:37:29	1.1s	mad_albattani	OK	132286cee620d9e77e8c13eaa56400ee	e25224fb-0995-4850-b564-d0e5742f5d74	nextflow run main.nf
+2021-07-19 11:44:18	1.4s	agitated_swartz	OK	132286cee620d9e77e8c13eaa56400ee	1b6523ba-e61b-4be3-baa8-8b86bbc58837	nextflow run main.nf --query newQuery.fasta
+2021-07-19 11:45:11	1.4s	drunk_hopper	OK	132286cee620d9e77e8c13eaa56400ee	e8c0a6a1-9064-4150-b923-ec8d3bd11a62	nextflow run main.nf --blastdb NwBlastDB
+2021-07-19 11:45:48	1.5s	sleepy_carson	OK	132286cee620d9e77e8c13eaa56400ee	b73d48a0-b612-4a11-84d1-155303924868	nextflow run main.nf --query sample1.fasta
