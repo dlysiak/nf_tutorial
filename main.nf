@@ -40,11 +40,19 @@ if (params.help) {
     exit 0
 }
 
+Channel
+    .fromPath(params.query)
+    .into {queryFile_ch} // create a channel from a file path and set the channel name into queryFile_ch
+    
+
 process runBlast {
+
+    input:
+    path(queryFile) from queryFile_ch
 
     script:
     """
-    $params.app -num_threads $params.threads -db $params.dbDir/$params.dbName -query $params.query -outfmt $params.outfmt $params.options -out $params.outFileName
+    $params.app -num_threads $params.threads -db $params.dbDir/$params.dbName -query $queryFile -outfmt $params.outfmt $params.options -out $params.outFileName
     """
 
 }
