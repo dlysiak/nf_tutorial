@@ -14,7 +14,7 @@ process runBlast {
 
     script:
     """
-    blastn -num_threads 2 -db $PWD/DB/blastDB -query $PWD/input.fasta -outfmt 6 -out input.blastout
+    blastn -num_threads $params.threads -db $params.dbDir/$params.dbName -query $params.query -outfmt 6 -out input.blastout
     """
 
 }
