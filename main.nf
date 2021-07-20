@@ -41,14 +41,21 @@ if (params.help) {
 }
 
 Channel
-    .fromPath(params.query)
-    .into {queryFile_ch} // create a channel from a file path and set the channel name into queryFile_ch
+    .fromPath(params.query) // create a channel from path params.query
+    .splitFasta(by: 1, file: true) //splitFasta by chunks of size 1 fasta record and make a file for these chunks in the work porcess folder
+    .into {queryFile_ch} // put this into  a channel named queryFile_ch
     
+// Send the output of all these chunks to a new channel and then use a different parameter to collect them before publishing.
 
 process runBlast {
 
     input:
-    path(queryFile) from queryFile_ch
+    path queryFile from queryFile_ch
+
+    output:
+    publishDir "${params.outdir}/blastout"
+    path(params.outFileName) into blast_output_ch
+    
 
     script:
     """
@@ -56,3 +63,6 @@ process runBlast {
     """
 
 }
+
+blast_output_ch
+    .collectFile(name: 'blast_output_combined.txt', storeDir: params.outdir)
