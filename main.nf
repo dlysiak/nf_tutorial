@@ -49,6 +49,8 @@ Channel
 
 process runBlast {
 
+    label 'blast'
+
     input:
     path queryFile from queryFile_ch
 
