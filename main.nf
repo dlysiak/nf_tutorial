@@ -40,6 +40,12 @@ if (params.help) {
     exit 0
 }
 
+// If --genome is supplied on the command line it will run a process
+if(params.genome) {
+    println "It worked"
+    exit 0
+}
+
 Channel
     .fromPath(params.query) // create a channel from path params.query
     .splitFasta(by: params.chunkSize, file: true) //splitFasta by chunks of size 1 fasta record and make a file for these chunks in the work porcess folder
