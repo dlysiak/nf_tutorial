@@ -42,7 +42,7 @@ if (params.help) {
 
 Channel
     .fromPath(params.query) // create a channel from path params.query
-    .splitFasta(by: 1, file: true) //splitFasta by chunks of size 1 fasta record and make a file for these chunks in the work porcess folder
+    .splitFasta(by: params.chunkSize, file: true) //splitFasta by chunks of size 1 fasta record and make a file for these chunks in the work porcess folder
     .into {queryFile_ch} // put this into  a channel named queryFile_ch
     
 // Send the output of all these chunks to a new channel and then use a different parameter to collect them before publishing.
