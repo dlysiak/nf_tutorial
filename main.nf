@@ -31,6 +31,7 @@ def helpMessage() {
         --threads                      Number of CPUs to use during blast job [16]
         --chunkSize                    Number of fasta records to use when splitting the query fasta file
         --app                          BLAST program to use [blastn;blastp,tblastn,blastx]
+        --genome                       If specified with a genome fasta file, a BLAST database will be generated for the genome 
         --help                         This usage statement.
         """
 }
@@ -40,18 +41,48 @@ if (params.help) {
     exit 0
 }
 
-// If --genome is supplied on the command line it will run a process
-if(params.genome) {
-    println "It worked"
-    exit 0
-}
+
 
 Channel
     .fromPath(params.query) // create a channel from path params.query
     .splitFasta(by: params.chunkSize, file: true) //splitFasta by chunks of size 1 fasta record and make a file for these chunks in the work porcess folder
     .into {queryFile_ch} // put this into  a channel named queryFile_ch
-    
+
 // Send the output of all these chunks to a new channel and then use a different parameter to collect them before publishing.
+
+
+// If --genome is supplied on the command line it will run a process
+if(params.genome) {
+    genomefile_ch = Channel //other method for creating a Channel- define the channel name and then an equal sign like a variable
+    .fromPath(params.genome)
+    .map { file -> tuple(file.simpleName, file.parent, file) } //nextflow function which will take the input (file) and create a tuple (multivariable output) of file.simpleName(file prefix), file.parent(directory path) and file(full file path)
+
+    process runMakeBlastDB {
+
+        input:
+        set val(dbName), path(dbDir), file(FILE) from genomefile_ch //from the genomefile_ch we set the (val, path, file) for the tuple (dbName,dbdir,FILE)
+
+        output:
+        val dbName into dbName_ch
+        path dbDir into dbDir_ch
+        //The output we are just passing the dbName and dbDir into new channels that are read into the runBlast process
+
+      
+        script:
+        """
+        makeblastdb -in ${params.genome} -dbtype 'nucl' -out $dbDir/$dbName
+        """
+    }
+
+} else {
+Channel.fromPath(params.dbDir)
+    .set { dbDir_ch }
+Channel.from(params.dbName)
+    .set { dbName_ch }
+}
+    // Part enclosed into else clause: , creates the BLAST databases but it
+    // doesn’t pass it on to runBlast but is over written by these lines
+  
 
 process runBlast {
 
