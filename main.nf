@@ -54,11 +54,11 @@ Channel
 // If --genome is supplied on the command line it will run a process
 if(params.genome) {
     genomefile_ch = Channel //other method for creating a Channel- define the channel name and then an equal sign like a variable
-    .fromPath(params.genome)
-    .map { file -> tuple(file.simpleName, file.parent, file) } //nextflow function which will take the input (file) and create a tuple (multivariable output) of file.simpleName(file prefix), file.parent(directory path) and file(full file path)
+        .fromPath(params.genome)
+        .map { file -> tuple(file.simpleName, file.parent, file) } //nextflow function which will take the input (file) and create a tuple (multivariable output) of file.simpleName(file prefix), file.parent(directory path) and file(full file path)
 
     process runMakeBlastDB {
-
+        
         input:
         set val(dbName), path(dbDir), file(FILE) from genomefile_ch //from the genomefile_ch we set the (val, path, file) for the tuple (dbName,dbdir,FILE)
 
