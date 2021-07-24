@@ -80,9 +80,8 @@ Channel.fromPath(params.dbDir)
 Channel.from(params.dbName)
     .set { dbName_ch }
 }
-    // Part enclosed into else clause: , creates the BLAST databases but it
-    // doesn’t pass it on to runBlast but is over written by these lines
-  
+    // Part enclosed into else clause: creates the BLAST databases and override 
+    // channels dbDir_ch, dbName_ch if genome parameter has not been passed  
 
 process runBlast {
 
